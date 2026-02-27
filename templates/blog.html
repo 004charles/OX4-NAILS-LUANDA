@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog - OX4 Nails{% endblock %}
+
+{% block content %}
+<!-- Page Banner Start -->
+<div class="page__banner" data-background="{% static 'img/bg/page.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__banner-title">
+                    <h1>Nosso Blog</h1>
+                    <div class="page__banner-title-menu">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><span>_</span>Blog</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner End -->
+
+<!-- Blog Area Start -->
+<div class="blog__area section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                <div class="blog__area-item">
+                    <div class="blog__area-item-image">
+                        <a href="#"><img src="{% static 'img/blog/blog-1.jpg' %}" alt=""></a>
+                        <div class="blog__area-item-image-date">
+                            <span>25</span>
+                            <span>Out</span>
+                        </div>
+                    </div>
+                    <div class="blog__area-item-content">
+                        <div class="blog__area-item-content-meta">
+                            <ul>
+                                <li><a href="#"><i class="far fa-user"></i>Admin</a></li>
+                                <li><a href="#"><i class="far fa-comments"></i>Comentários (3)</a></li>
+                            </ul>
+                        </div>
+                        <h5><a href="{% url 'blog_details' %}">Tendências de Nail Art para 2026</a></h5>
+                        <a href="{% url 'blog_details' %}" class="simple-btn">Ler Mais<i
+                                class="far fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                <div class="blog__area-item">
+                    <div class="blog__area-item-image">
+                        <a href="#"><img src="{% static 'img/blog/blog-2.jpg' %}" alt=""></a>
+                        <div class="blog__area-item-image-date">
+                            <span>20</span>
+                            <span>Out</span>
+                        </div>
+                    </div>
+                    <div class="blog__area-item-content">
+                        <div class="blog__area-item-content-meta">
+                            <ul>
+                                <li><a href="#"><i class="far fa-user"></i>Admin</a></li>
+                                <li><a href="#"><i class="far fa-comments"></i>Comentários (5)</a></li>
+                            </ul>
+                        </div>
+                        <h5><a href="#">Cuidados Essenciais com Unhas de Gel</a></h5>
+                        <a href="#" class="simple-btn">Ler Mais<i class="far fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                <div class="blog__area-item">
+                    <div class="blog__area-item-image">
+                        <a href="#"><img src="{% static 'img/blog/blog-3.jpg' %}" alt=""></a>
+                        <div class="blog__area-item-image-date">
+                            <span>15</span>
+                            <span>Out</span>
+                        </div>
+                    </div>
+                    <div class="blog__area-item-content">
+                        <div class="blog__area-item-content-meta">
+                            <ul>
+                                <li><a href="#"><i class="far fa-user"></i>Admin</a></li>
+                                <li><a href="#"><i class="far fa-comments"></i>Comentários (2)</a></li>
+                            </ul>
+                        </div>
+                        <h5><a href="#">Benefícios da Manicure Regular</a></h5>
+                        <a href="#" class="simple-btn">Ler Mais<i class="far fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 md-mb-30">
+                <div class="blog__area-item">
+                    <div class="blog__area-item-image">
+                        <a href="#"><img src="{% static 'img/blog/blog-4.jpg' %}" alt=""></a>
+                        <div class="blog__area-item-image-date">
+                            <span>10</span>
+                            <span>Out</span>
+                        </div>
+                    </div>
+                    <div class="blog__area-item-content">
+                        <div class="blog__area-item-content-meta">
+                            <ul>
+                                <li><a href="#"><i class="far fa-user"></i>Admin</a></li>
+                                <li><a href="#"><i class="far fa-comments"></i>Comentários (4)</a></li>
+                            </ul>
+                        </div>
+                        <h5><a href="#">Como Escolher o Formato Ideal</a></h5>
+                        <a href="#" class="simple-btn">Ler Mais<i class="far fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 md-mb-30">
+                <div class="blog__area-item">
+                    <div class="blog__area-item-image">
+                        <a href="#"><img src="{% static 'img/blog/blog-5.jpg' %}" alt=""></a>
+                        <div class="blog__area-item-image-date">
+                            <span>05</span>
+                            <span>Out</span>
+                        </div>
+                    </div>
+                    <div class="blog__area-item-content">
+                        <div class="blog__area-item-content-meta">
+                            <ul>
+                                <li><a href="#"><i class="far fa-user"></i>Admin</a></li>
+                                <li><a href="#"><i class="far fa-comments"></i>Comentários (1)</a></li>
+                            </ul>
+                        </div>
+                        <h5><a href="#">Dicas para Pés Perfeitos no Verão</a></h5>
+                        <a href="#" class="simple-btn">Ler Mais<i class="far fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6">
+                <div class="blog__area-item">
+                    <div class="blog__area-item-image">
+                        <a href="#"><img src="{% static 'img/blog/blog-6.jpg' %}" alt=""></a>
+                        <div class="blog__area-item-image-date">
+                            <span>01</span>
+                            <span>Out</span>
+                        </div>
+                    </div>
+                    <div class="blog__area-item-content">
+                        <div class="blog__area-item-content-meta">
+                            <ul>
+                                <li><a href="#"><i class="far fa-user"></i>Admin</a></li>
+                                <li><a href="#"><i class="far fa-comments"></i>Comentários (0)</a></li>
+                            </ul>
+                        </div>
+                        <h5><a href="#">A Importância da Hidratação</a></h5>
+                        <a href="#" class="simple-btn">Ler Mais<i class="far fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-60">
+            <div class="col-xl-12">
+                <div class="theme__pagination text-center">
+                    <ul>
+                        <li><a href="#"><i class="far fa-angle-double-left"></i></a></li>
+                        <li><a class="active" href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#"><i class="far fa-angle-double-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog Area End -->
+{% endblock %}

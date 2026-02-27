@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Banner Area Start -->
+<div class="home__banner">
+    <div class="banner__slide swiper banner-slide">
+        <div class="swiper-wrapper">
+            <div class="banner__slide-area swiper-slide" data-swiper-autoplay="6000">
+                <div class="banner__slide-area-image" data-background="{% static 'img/bg/banner-bg-1.jpg' %}"></div>
+
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-8 order-last order-lg-first">
+                            <div class="banner__slide-content">
+                                <span class="subtitle__one" data-animation="fadeInLeft" data-delay=".4s">Bem-vindo ao
+                                    OX4 Nails</span>
+                                <h1 data-animation="fadeInLeft" data-delay=".6s">O Melhor Salão para Cuidar de Si</h1>
+                                <div class="banner__slide-content-button" data-animation="fadeInLeft" data-delay=".9s">
+                                    <a href="#" class="theme-banner-btn">Saber Mais<i
+                                            class="far fa-angle-double-right"></i></a>
+                                    <a href="#" class="theme-border-btn">Ver Serviços<i
+                                            class="far fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner__slide-right" data-animation="fadeInRight" data-delay="1.3s">
+                    <img src="{% static 'img/bg/banner-1.png' %}" alt="">
+                </div>
+            </div>
+            <div class="banner__slide-area swiper-slide" data-swiper-autoplay="6000">
+                <div class="banner__slide-area-image" data-background="{% static 'img/bg/banner-bg-2.jpg' %}"></div>
+
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-8 order-last order-lg-first">
+                            <div class="banner__slide-content">
+                                <span class="subtitle__one" data-animation="fadeInLeft" data-delay=".4s">Bem-vindo ao
+                                    OX4 Nails</span>
+                                <h1 data-animation="fadeInLeft" data-delay=".6s">Especialistas em Manicure e Pedicure
+                                </h1>
+                                <div class="banner__slide-content-button" data-animation="fadeInLeft" data-delay=".9s">
+                                    <a href="#" class="theme-banner-btn">Saber Mais<i
+                                            class="far fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner__slide-right" data-animation="fadeInRight" data-delay="1.3s">
+                    <img src="{% static 'img/bg/banner-2.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="home__banner-button">
+            <div class="home__banner-button-prev swiper-button-prev"><i class="far fa-long-arrow-left"></i></div>
+            <div class="home__banner-button-next swiper-button-next"><i class="far fa-long-arrow-right"></i></div>
+        </div>
+    </div>
+</div>
+<!-- Banner Area End -->
+<!-- About Area Start -->
+<div class="about__area section-padding">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-6 col-lg-6 lg-mb-30">
+                <div class="about__area-left">
+                    <div class="about__area-left-image">
+                        <img src="{% static 'img/about/about-1.jpg' %}" alt="">
+                        <div class="about__area-left-image-two">
+                            <img class="img__full" src="{% static 'img/about/about-2.jpg' %}" alt="">
+                        </div>
+                        <div class="about__area-left-image-three">
+                            <img class="img__full" src="{% static 'img/about/about-3.jpg' %}" alt="">
+                        </div>
+                        <div class="about__area-left-image-shape">
+                            <img class="img__full" src="{% static 'img/shape/about.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="about__area-right">
+                    <div class="about__area-right-title">
+                        <span class="subtitle__two">Sobre</span>
+                        <span class="subtitle__one">Sobre Nós</span>
+                        <h2>O Melhor Salão de Luanda</h2>
+                        <p>Na OX4 Nails, dedicamo-nos a realçar a sua beleza natural com serviços de excelência em
+                            manicure, pedicure, nail art, estética e cabelos.</p>
+                    </div>
+                    <div class="about__area-right-bottom mt-35">
+                        <h5>Somos um salão líder em Luanda, oferecendo tudo desde unhas de gel a tratamentos de
+                            estética.</h5>
+                        <a href="#" class="theme-btn mt-50">Ler Mais<i class="far fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About Area End -->
+<!-- Services Area Start -->
+<div class="services__area section-padding">
+    <div class="services__area-shape">
+        <img src="{% static 'img/shape/services.png' %}" alt="">
+    </div>
+    <div class="container">
+        <div class="row mb-50">
+            <div class="col-xl-12">
+                <div class="services__area-title">
+                    <span class="subtitle__two">Serviços</span>
+                    <span class="subtitle__one">Nossos Serviços</span>
+                    <h2>Beleza e Bem-Estar</h2>
+                </div>
+            </div>
+        </div>
+        <!-- Services content here, simplified for initial migration -->
+        <div class="row">
+            {% for service in services %}
+            <div class="col-xl-4 col-lg-4 col-md-6 mb-25">
+                <div class="services__page-item">
+                    <div class="services__page-item-icon">
+                        {% if service.image %}
+                        <img src="{{ service.image.url }}" alt="{{ service.name }}"
+                            style="width: 50px; height: 50px; object-fit: contain;">
+                        {% else %}
+                        <img src="{% static 'img/icon/services-1.png' %}" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="services__page-item-content">
+                        <h4><a href="{% url 'service_details' service.id %}">{{ service.name }}</a></h4>
+                        <p>{{ service.description|truncatechars:80 }}</p>
+                        <p class="price" style="font-weight: bold; color: var(--theme-color);">{{ service.price }} Kz
+                        </p>
+                        <a href="{% url 'service_details' service.id %}" class="simple-btn">Saber Mais<i
+                                class="far fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-xl-12">
+                <p class="text-center">Nenhum serviço disponível de momento.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Services Area End -->
+<!-- Booking Area Start -->
+<div class="booking__area section-padding" data-background="{% static 'img/bg/booking.jpg' %}">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-7 col-lg-8 lg-mb-30">
+                <div class="booking__area-title lg-t-center">
+                    <span class="subtitle__two">Marcação</span>
+                    <span class="subtitle__one">Agende Agora</span>
+                    <h2>Marque o seu horário online ou ligue para nós</h2>
+                    <a href="#" class="theme-banner-btn mt-40">Marcar Agora<i class="far fa-angle-double-right"></i></a>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-4">
+                <div class="booking__area-right t-right lg-t-center">
+                    <div class="booking__area-right-contact">
+                        <div class="booking__area-right-contact-icon">
+                            <i class="fal fa-phone-alt"></i>
+                        </div>
+                        <div class="booking__area-right-contact-content">
+                            <span>Ligue Agora</span>
+                            <h4><a href="tel:+123(568)584">+244 923 456 789</a></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Booking Area End -->
+{% endblock %}

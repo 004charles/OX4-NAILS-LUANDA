@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Serviços - OX4 Nails{% endblock %}
+
+{% block content %}
+<!-- Page Banner Start -->
+<div class="page__banner" data-background="{% static 'img/bg/page.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__banner-title">
+                    <h1>Nossos Serviços</h1>
+                    <div class="page__banner-title-menu">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><span>_</span>Serviços</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner End -->
+
+<!-- Services Page Start -->
+<div class="services__page section-padding pb-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            {% for service in services %}
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-25">
+                <div class="services__page-item">
+                    <div class="services__page-item-icon">
+                        {% if service.image %}
+                        <img src="{{ service.image.url }}" alt="{{ service.name }}"
+                            style="width: 50px; height: 50px; object-fit: contain;">
+                        {% else %}
+                        <img src="{% static 'img/icon/services-1.png' %}" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="services__page-item-content">
+                        <h4><a href="{% url 'service_details' service.id %}">{{ service.name }}</a></h4>
+                        <p>{{ service.description|truncatechars:80 }}</p>
+                        <p class="price" style="font-weight: bold; color: var(--theme-color);">{{ service.price }} Kz
+                        </p>
+                        <a href="{% url 'service_details' service.id %}" class="simple-btn">Saber Mais<i
+                                class="far fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-xl-12">
+                <p class="text-center">Nenhum serviço disponível de momento.</p>
+            </div>
+            {% endfor %}
+            <!-- More items can be added here or dynamically loaded -->
+        </div>
+    </div>
+</div>
+<!-- Services Page End -->
+
+<!-- Working Area Start -->
+<div class="working__two section-padding">
+    <div class="working__two-shape">
+        <img src="{% static 'img/shape/hours.png' %}" alt="">
+    </div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-7 col-lg-7 lg-mb-30">
+                <div class="working__two-left">
+                    <div class="working__two-left-title">
+                        <span class="subtitle__two">Horário</span>
+                        <span class="subtitle__one">Horário de Funcionamento</span>
+                        <h2>Estamos Abertos</h2>
+                        <p>Visite-nos no horário que for mais conveniente para si. Recomendamos marcação prévia para
+                            evitar esperas.</p>
+                    </div>
+                    <div class="working__two-left-hours">
+                        <ul>
+                            <li>Segunda - Sexta<span>9:00 - 19:00</span></li>
+                            <li>Sábado<span>9:00 - 18:00</span></li>
+                            <li>Domingo<span>Fechado</span></li>
+                        </ul>
+                    </div>
+                    <a href="#" class="theme-banner-btn">Marcar Agora<i class="far fa-angle-double-right"></i></a>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-5">
+                <img class="img__full" src="{% static 'img/calendar.jpg' %}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Working Area End -->
+{% endblock %}

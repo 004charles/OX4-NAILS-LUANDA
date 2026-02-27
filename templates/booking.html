@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Marcar Serviço - OX4 Nails{% endblock %}
+
+{% block content %}
+<!-- Page Banner Start -->
+<div class="page__banner" data-background="{% static 'img/bg/page.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__banner-title">
+                    <h1>Fazer Marcação</h1>
+                    <div class="page__banner-title-menu">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><span>_</span>Agendamento</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner End -->
+
+<!-- Booking Area Start -->
+<div class="contact__area section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-lg-8">
+                <div class="contact__area-form">
+                    <h3 class="t-center mb-30">Agende o seu momento</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-sm-6 mb-30">
+                                <div class="contact__area-form-item">
+                                    <i class="fal fa-concierge-bell"></i>
+                                    <select name="service" required class="form-select"
+                                        style="width: 100%; border: none; background: transparent; height: 50px;">
+                                        <option value="" disabled selected>Selecionar Serviço</option>
+                                        {% for service in services %}
+                                        <option value="{{ service.id }}">{{ service.name }} - {{ service.price }} Kz
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-30">
+                                <div class="contact__area-form-item">
+                                    <i class="fal fa-user"></i>
+                                    <select name="professional" class="form-select"
+                                        style="width: 100%; border: none; background: transparent; height: 50px;">
+                                        <option value="" selected>Qualquer Profissional</option>
+                                        {% for professional in professionals %}
+                                        <option value="{{ professional.id }}">{{ professional.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-30">
+                                <div class="contact__area-form-item">
+                                    <i class="fal fa-calendar-alt"></i>
+                                    <input type="date" name="date" required min="{{ today_date }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-30">
+                                <div class="contact__area-form-item">
+                                    <i class="fal fa-clock"></i>
+                                    <input type="time" name="time" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 mb-30">
+                                <div class="contact__area-form-item">
+                                    <i class="fal fa-sticky-note"></i>
+                                    <textarea name="notes"
+                                        placeholder="Notas ou pedidos especiais (opcional)"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="contact__area-form-item text-center">
+                                    <button class="theme-btn" type="submit">Confirmar Marcação<i
+                                            class="far fa-angle-double-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Booking Area End -->
+{% endblock %}

@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Detalhes do Blog - OX4 Nails{% endblock %}
+
+{% block content %}
+<!-- Page Banner Start -->
+<div class="page__banner" data-background="{% static 'img/bg/page.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__banner-title">
+                    <h1>Detalhes da Publicação</h1>
+                    <div class="page__banner-title-menu">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'blog' %}">Blog</a></li>
+                            <li><span>_</span>Detalhes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner End -->
+
+<!-- Blog Details Start -->
+<div class="blog__details section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 lg-mb-30">
+                <div class="blog__details-left">
+                    <img src="{% static 'img/blog/blog-13.jpg' %}" alt="">
+                    <div class="blog__details-left-meta">
+                        <ul>
+                            <li><a href="#"><span>Nail Art</span></a></li>
+                            <li><a href="#"><i class="fal fa-user"></i>Por - Admin</a></li>
+                            <li><a href="#"><i class="fal fa-calendar-alt"></i>25 Out, 2023</a></li>
+                            <li><a href="#"><i class="fal fa-comments"></i>3 Comentários</a></li>
+                        </ul>
+                    </div>
+                    <h3 class="mb-20">As Melhores Tendências de Nail Art para 2026</h3>
+                    <p class="mb-20">Descubra as tendências que estão a marcar o mundo da estética este ano. Desde cores
+                        vibrantes a designs minimalistas, temos tudo o que precisa saber para manter as suas unhas na
+                        moda.</p>
+                    <p>A saúde das suas unhas é a nossa prioridade, por isso utilizamos apenas os melhores produtos do
+                        mercado.</p>
+                    <div class="blog__details-left-box">
+                        <p>A beleza começa no momento em que decide ser você mesma. Cuide de si e das suas unhas com
+                            carinho.</p>
+                        <h6>Equipa OX4 Nails</h6>
+                    </div>
+                    <p>Visite-nos para experimentar estas novas tendências. As nossas profissionais estão prontas para
+                        aconselhar o melhor estilo para si.</p>
+                    <div class="row mt-40 mb-40">
+                        <div class="col-sm-6 sm-mb-30">
+                            <div class="blog__details-left-list">
+                                <img class="img__full" src="{% static 'img/blog/details-1.jpg' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="blog__details-left-list blog__details-left-list-hover">
+                                <img class="img__full" src="{% static 'img/blog/details-2.jpg' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog__details-left-related">
+                        <div class="row align-items-center">
+                            <div class="col-md-7 md-mb-10">
+                                <div class="blog__details-left-related-tag">
+                                    <h6>Tags :</h6>
+                                    <ul>
+                                        <li><a href="#">Unhas</a></li>
+                                        <li><a href="#">Tendências</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-5 t-right md-t-left">
+                                <div class="blog__details-left-related-share">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a>
+                                        </li>
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comments section simplified for static view -->
+                    <div class="blog__details-left-comment mb-55">
+                        <h4 class="mb-40">Comentários (2)</h4>
+                        <div class="blog__details-left-comment-item">
+                            <div class="blog__details-left-comment-item-comment">
+                                <div class="blog__details-left-comment-item-comment-image">
+                                    <img src="{% static 'img/avatar/testimonial-1.jpg' %}" alt="">
+                                </div>
+                                <div class="blog__details-left-comment-item-comment-content">
+                                    <h5>Ana Santos<a href="#"><i class="far fa-reply"></i>Responder</a></h5>
+                                    <span>20 Out, 2023 às 21:00</span>
+                                    <p>Adorei as dicas! Vou experimentar o design minimalista na próxima visita.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog__details-left-contact">
+                        <h4 class="mb-40">Deixe um Comentário</h4>
+                        <div class="blog__details-left-contact-form">
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-sm-6 mb-30">
+                                        <div class="blog__details-left-contact-form-item">
+                                            <i class="fal fa-user"></i>
+                                            <input type="text" name="name" placeholder="Nome Completo"
+                                                required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 sm-mb-30">
+                                        <div class="blog__details-left-contact-form-item">
+                                            <i class="fal fa-envelope"></i>
+                                            <input type="text" name="email" placeholder="Email" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 mb-30">
+                                        <div class="blog__details-left-contact-form-item">
+                                            <i class="fal fa-pen"></i>
+                                            <textarea name="message"
+                                                placeholder="Escreva o seu comentário...."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="blog__details-left-contact-form-item">
+                                            <button class="theme-btn" type="submit">Enviar Comentário<i
+                                                    class="far fa-angle-double-right"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4">
+                <div class="all__sidebar-item-search ml-25 xl-ml-0 mb-40">
+                    <form action="#">
+                        <input type="text" placeholder="Pesquisar...">
+                        <button type="submit"><i class="fal fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="all__sidebar ml-25 xl-ml-0">
+                    <div class="all__sidebar-item">
+                        <h5>Categorias</h5>
+                        <div class="all__sidebar-item-category">
+                            <ul>
+                                <li><a href="#"><i class="far fa-angle-double-right"></i>Manicure<span>(08)</span></a>
+                                </li>
+                                <li><a href="#"><i class="far fa-angle-double-right"></i>Pedicure<span>(06)</span></a>
+                                </li>
+                                <li><a href="#"><i class="far fa-angle-double-right"></i>Unhas de
+                                        Gel<span>(05)</span></a></li>
+                                <li><a href="#"><i class="far fa-angle-double-right"></i>Nail Art<span>(09)</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="all__sidebar-item mt-40">
+                        <h5>Posts Recentes</h5>
+                        <div class="all__sidebar-item-post">
+                            <div class="all__sidebar-item-post-item">
+                                <div class="all__sidebar-item-post-item-image">
+                                    <a href="#"><img src="{% static 'img/blog/post-1.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="all__sidebar-item-post-item-content">
+                                    <span><i class="fal fa-calendar-alt"></i>05 Out, 2023</span>
+                                    <h6><a href="#">Cuidados Essenciais</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="all__sidebar-item mt-40">
+                        <h5>Tags</h5>
+                        <div class="all__sidebar-item-tag">
+                            <ul>
+                                <li><a href="#">Design</a></li>
+                                <li><a href="#">Beleza</a></li>
+                                <li><a href="#">Saúde</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog Details End -->
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registo - OX4 Nails{% endblock %}
+
+{% block content %}
+<!-- Page Banner Start -->
+<div class="page__banner" data-background="{% static 'img/bg/page.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__banner-title">
+                    <h1>Criar Conta</h1>
+                    <div class="page__banner-title-menu">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><span>_</span>Registo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner End -->
+
+<!-- Register Area Start -->
+<div class="contact__area section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-lg-8">
+                <div class="contact__area-form">
+                    <h3 class="t-center mb-30">Junte-se à nós!</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            {% for field in form %}
+                            <div class="col-sm-6 mb-30">
+                                <div class="contact__area-form-item">
+                                    {% if field.name == 'password' or field.name == 'password_confirmation' %}
+                                    <i class="fal fa-lock"></i>
+                                    {% elif field.name == 'email' %}
+                                    <i class="fal fa-envelope"></i>
+                                    {% else %}
+                                    <i class="fal fa-user"></i>
+                                    {% endif %}
+                                    {{ field }}
+                                    {% if field.errors %}
+                                    <div class="text-danger" style="font-size: 12px; margin-top: 5px;">
+                                        {{ field.errors }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <div class="col-lg-12">
+                                <div class="contact__area-form-item text-center">
+                                    <button class="theme-btn" type="submit">Criar Conta<i
+                                            class="far fa-angle-double-right"></i></button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-20 text-center">
+                                <p>Já tem conta? <a href="{% url 'login' %}">Faça Login</a></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Register Area End -->
+{% endblock %}

@@ -1,0 +1,226 @@
+{% extends 'dashboard/base_receptionist.html' %}
+{% load static %}
+
+{% block title %}Dashboard Recepcionista - OX4 Management{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h2 class="h4 text-gray-800">Painel de Controlo</h2>
+    </div>
+</div>
+
+<!-- Stats Row -->
+<div class="row mb-50">
+    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+        <div class="services__item" style="padding: 30px; border: 1px solid var(--border-color-1);">
+            <div class="services__item-icon">
+                <i class="fal fa-calendar-check" style="font-size: 40px; color: var(--primary-color);"></i>
+            </div>
+            <div class="services__item-content mt-20">
+                <h3>{{ appointments_today_count }}</h3>
+                <p>Marcações Hoje</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+        <div class="services__item" style="padding: 30px; border: 1px solid var(--border-color-1);">
+            <div class="services__item-icon">
+                <i class="fal fa-clock" style="font-size: 40px; color: var(--primary-color);"></i>
+            </div>
+            <div class="services__item-content mt-20">
+                <h3>{{ pending_appointments_count }}</h3>
+                <p>Pendentes</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+        <div class="services__item" style="padding: 30px; border: 1px solid var(--border-color-1);">
+            <div class="services__item-icon">
+                <i class="fal fa-plus-circle" style="font-size: 40px; color: var(--primary-color);"></i>
+            </div>
+            <div class="services__item-content mt-20">
+                <button type="button" class="theme-btn" data-bs-toggle="modal" data-bs-target="#newAppointmentModal">
+                    Nova Marcação
+                </button>
+                <p class="mt-10">Agendar Manualmente</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filter & List -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="services__details-left">
+            <div class="row mb-30 align-items-center">
+                <div class="col-md-4">
+                    <h3>Marcações: {{ filter_date|date:"d/m/Y" }}</h3>
+                </div>
+                <div class="col-md-4">
+                    <!-- Search Bar -->
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-search"></i></span>
+                        <input type="text" id="searchInput" class="form-control"
+                            placeholder="Pesquisar cliente ou serviço...">
+                    </div>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <form method="get" class="d-inline-flex align-items-center">
+                        <label class="me-2">Data:</label>
+                        <input type="date" name="date" class="form-control" value="{{ filter_date|date:'Y-m-d' }}"
+                            onchange="this.form.submit()" style="width: auto;">
+                    </form>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="appointmentsTable">
+                    <thead>
+                        <tr style="background-color: var(--color-6);">
+                            <th>Hora</th>
+                            <th>Cliente</th>
+                            <th>Serviço</th>
+                            <th>Profissional</th>
+                            <th>Estado</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appointment in appointments %}
+                        <tr>
+                            <td style="vertical-align: middle;"><strong>{{ appointment.date_time|date:"H:i"
+                                    }}</strong></td>
+                            <td style="vertical-align: middle;">
+                                {{ appointment.client.get_full_name|default:appointment.client.username }}<br>
+
+                                {% if appointment.client.phone %}
+                                <small class="text-muted"><i class="fas fa-phone-alt me-1"></i>{{
+                                    appointment.client.phone }}</small>
+                                <a href="https://wa.me/{{ appointment.client.phone|cut:' '|cut:'+' }}" target="_blank"
+                                    class="text-success ms-2" title="Conversar no WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                {% else %}
+                                <small class="text-muted">Sem telefone</small>
+                                {% endif %}
+                            </td>
+                            <td style="vertical-align: middle;">{{ appointment.service.name }}</td>
+                            <td style="vertical-align: middle;">{{ appointment.professional.name|default:"-" }}
+                            </td>
+                            <td style="vertical-align: middle;">
+                                {% if appointment.status == 'pending' %}
+                                <span class="badge bg-warning text-dark">Pendente</span>
+                                {% elif appointment.status == 'confirmed' %}
+                                <span class="badge bg-success">Confirmado</span>
+                                {% elif appointment.status == 'canceled' %}
+                                <span class="badge bg-danger">Cancelado</span>
+                                {% elif appointment.status == 'completed' %}
+                                <span class="badge bg-info text-dark">Concluído</span>
+                                {% else %}
+                                {{ appointment.status }}
+                                {% endif %}
+                            </td>
+                            <td style="vertical-align: middle;">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-light dropdown-toggle" type="button"
+                                        data-bs-toggle="dropdown">
+                                        Opções
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item"
+                                                href="{% url 'update_appointment_status' appointment.id 'confirmed' %}"><i
+                                                    class="fas fa-check text-success me-2"></i> Confirmar</a>
+                                        </li>
+                                        <li><a class="dropdown-item"
+                                                href="{% url 'update_appointment_status' appointment.id 'completed' %}"><i
+                                                    class="fas fa-check-double text-info me-2"></i> Concluir</a>
+                                        </li>
+                                        <li><a class="dropdown-item"
+                                                href="{% url 'update_appointment_status' appointment.id 'canceled' %}"><i
+                                                    class="fas fa-times text-danger me-2"></i> Cancelar</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="{% url 'update_appointment_status' appointment.id 'no_show' %}"><i
+                                                    class="fas fa-user-slash text-muted me-2"></i> Não
+                                                Compareceu</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center py-4">Nenhuma marcação para este dia.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Simple Client-side Search
+    document.getElementById('searchInput').addEventListener('keyup', function () {
+        let searchText = this.value.toLowerCase();
+        let tableRows = document.querySelectorAll('#appointmentsTable tbody tr');
+
+        tableRows.forEach(row => {
+            if (row.cells.length > 1) { // Skip empty/messenger rows
+                let clientName = row.cells[1].innerText.toLowerCase();
+                let serviceName = row.cells[2].innerText.toLowerCase();
+
+                if (clientName.includes(searchText) || serviceName.includes(searchText)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    });
+</script>
+
+<!-- Modal Nova Marcação -->
+<div class="modal fade" id="newAppointmentModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Nova Marcação Manual</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post">
+                <div class="modal-body">
+                    {% csrf_token %}
+                    <input type="hidden" name="create_appointment" value="1">
+
+                    <div class="mb-3">
+                        <label class="form-label">Cliente</label>
+                        {{ form.client }}
+                        <div class="form-text">Selecione um cliente existente.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Serviço</label>
+                        {{ form.service }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Profissional</label>
+                        {{ form.professional }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Data e Hora</label>
+                        {{ form.date_time }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Notas</label>
+                        {{ form.notes }}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="theme-btn" style="padding: 10px 20px;">Agendar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

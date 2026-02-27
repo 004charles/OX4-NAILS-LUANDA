@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sobre Nós - OX4 Nails{% endblock %}
+
+{% block content %}
+<!-- Page Banner Start -->
+<div class="page__banner" data-background="{% static 'img/bg/page.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__banner-title">
+                    <h1>Sobre Nós</h1>
+                    <div class="page__banner-title-menu">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><span>_</span>Sobre</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner End -->
+
+<!-- History Area Start -->
+<div class="history__area section-padding">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-6 col-lg-6 lg-mb-30">
+                <div class="history__area-left">
+                    <div class="history__area-left-image">
+                        <img src="{% static 'img/about/about-6.jpg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="history__area-right">
+                    <div class="history__area-right-title">
+                        <span class="subtitle__two">História</span>
+                        <span class="subtitle__one">Desde 2020</span>
+                        <h2>A Nossa História</h2>
+                        <p class="mb-25">O OX4 Nails nasceu da paixão por proporcionar momentos de bem-estar e beleza.
+                            Começámos como um pequeno espaço e crescemos graças à confiança das nossas clientes.</p>
+                        <p>Hoje somos referência em Luanda, oferecendo serviços de alta qualidade num ambiente acolhedor
+                            e relaxante, sempre focados na satisfação e autoestima das nossas clientes.</p>
+                    </div>
+                    <div class="history__area-right-author">
+                        <div class="history__area-right-author-image">
+                            <img src="{% static 'img/avatar/about.jpg' %}" alt="">
+                        </div>
+                        <div class="history__area-right-author-content">
+                            <h4>Maria Silva</h4>
+                            <span>Fundadora</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- History Area End -->
+
+<!-- Mission Area Start -->
+<div class="mission__area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5">
+                <div class="mission__area-left">
+                    <div class="mission__area-left-title">
+                        <span class="subtitle__two">Missão</span>
+                        <span class="subtitle__one">Missão</span>
+                        <h2>Nossa Missão</h2>
+                        <p class="mb-25">Elevar a autoestima de cada cliente através de serviços de beleza excepcionais,
+                            utilizando produtos de qualidade e técnicas inovadoras.</p>
+                        <p>Acreditamos que cuidar de si não é um luxo, mas uma necessidade. Queremos ser o seu refúgio
+                            de beleza e tranquilidade no dia-a-dia.</p>
+                        <a href="#" class="theme-btn mt-30">Marcar Agora<i class="far fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mission__area-right">
+        <img src="{% static 'img/about/mission.png' %}" alt="">
+    </div>
+</div>
+<!-- Mission Area End -->
+
+<!-- Testimonial Area Start -->
+<div class="testimonial__area two section-padding">
+    <div class="testimonial__area-shape">
+        <img src="{% static 'img/shape/testimonial.png' %}" alt="">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 xl-mb-30">
+                <div class="testimonial__area-title">
+                    <span class="subtitle__two">Testemunhos</span>
+                    <span class="subtitle__one">Opiniões</span>
+                    <h2>O que dizem as nossas Clientes</h2>
+                    <p>A satisfação dos nossos clientes é o nosso maior orgulho.</p>
+                    <a href="#" class="theme-border-btn">Ver Todas<i class="far fa-angle-double-right"></i></a>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6 md-mb-30">
+                <div class="testimonial__area-item">
+                    <div class="testimonial__area-item-avatar">
+                        <img src="{% static 'img/avatar/testimonial-1.jpg' %}" alt="">
+                    </div>
+                    <div class="testimonial__area-item-content">
+                        <p>Adoro o serviço! As manicures são super atenciosas e o resultado final é sempre perfeito.
+                            Recomendo muito!</p>
+                        <div class="testimonial__area-item-content-social">
+                            <ul>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <h5>Ana Costa</h5>
+                        <span>Cliente Regular</span>
+                    </div>
+                    <div class="testimonial__area-item-icon">
+                        <img src="{% static 'img/icon/quote.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6">
+                <div class="testimonial__area-item">
+                    <div class="testimonial__area-item-avatar">
+                        <img src="{% static 'img/avatar/testimonial-2.jpg' %}" alt="">
+                    </div>
+                    <div class="testimonial__area-item-content">
+                        <p>O ambiente é fantástico e muito relaxante. Faço sempre as minhas unhas de gel aqui e duram
+                            imenso tempo.</p>
+                        <div class="testimonial__area-item-content-social">
+                            <ul>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <h5>Joana Ferreira</h5>
+                        <span>Cliente Regular</span>
+                    </div>
+                    <div class="testimonial__area-item-icon">
+                        <img src="{% static 'img/icon/quote.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial Area End -->
+{% endblock %}

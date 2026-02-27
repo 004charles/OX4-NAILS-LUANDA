@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Detalhes do Serviço - OX4 Nails{% endblock %}
+
+{% block content %}
+<!-- Page Banner Start -->
+<div class="page__banner" data-background="{% static 'img/bg/page.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__banner-title">
+                    <h1>Detalhes do Serviço</h1>
+                    <div class="page__banner-title-menu">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'services' %}">Serviços</a></li>
+                            <li><span>_</span>Detalhes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner End -->
+
+<!-- Services Details Start -->
+<div class="services__details section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-4 lg-mb-30">
+                <div class="all__sidebar">
+                    <div class="all__sidebar-item">
+                        <h5>Serviços Populares</h5>
+                        <div class="all__sidebar-item-category">
+                            <ul>
+                                {% for popular in popular_services %}
+                                <li><a href="{% url 'service_details' popular.id %}"><i
+                                            class="far fa-angle-double-right"></i>{{ popular.name }}<span>({{
+                                            popular.duration_minutes }}m)</span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="all__sidebar-item-help mt-30" data-background="{% static 'img/service-details.jpg' %}">
+                    <h5>Precisa de Ajuda?</h5>
+                    <div class="all__sidebar-item-help-contact">
+                        <div class="all__sidebar-item-help-contact-icon">
+                            <i class="fal fa-phone-alt"></i>
+                        </div>
+                        <div class="all__sidebar-item-help-contact-content">
+                            <span>Ligação Rápida</span>
+                            <h6><a href="tel:+244920000000">+244 920 000 000</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-8">
+                <div class="services__details-left">
+                    <div class="services__details-left-image mb-30">
+                        {% if service.image %}
+                        <img src="{{ service.image.url }}" alt="{{ service.name }}">
+                        {% else %}
+                        <img src="{% static 'img/services-details.jpg' %}" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="services__details-left-content">
+                        <h2 class="mb-30">{{ service.name }}</h2>
+                        <p class="mb-20">{{ service.description }}</p>
+
+                        <div class="row mt-40 mb-40">
+                            <div class="col-sm-6 sm-mb-30">
+                                <div class="service-meta-box">
+                                    <h4>Preço</h4>
+                                    <p class="price"
+                                        style="font-size: 24px; font-weight: bold; color: var(--theme-color);">{{
+                                        service.price }} Kz</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="service-meta-box">
+                                    <h4>Duração</h4>
+                                    <p>{{ service.duration_minutes }} Minutos</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="mb-15">Sobre este serviço</h3>
+                        <p class="m-0">{{ service.description }}</p>
+
+                        <div class="mt-30">
+                            <a href="{% url 'booking' %}" class="theme-btn">Agendar Agora<i
+                                    class="far fa-angle-double-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Services Details End -->
+{% endblock %}

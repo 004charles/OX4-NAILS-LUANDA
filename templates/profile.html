@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Minha Conta - OX4 Nails{% endblock %}
+
+{% block content %}
+<!-- Page Banner Start -->
+<div class="page__banner" data-background="{% static 'img/bg/page.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__banner-title">
+                    <h1>Minha Conta</h1>
+                    <div class="page__banner-title-menu">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><span>_</span>Perfil</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner End -->
+
+<!-- Profile Area Start -->
+<div class="contact__area section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar / User Info -->
+            <div class="col-xl-4 col-lg-4 lg-mb-30">
+                <div class="all__sidebar">
+                    <div class="all__sidebar-item">
+                        <h5>Dados Pessoais</h5>
+                        <div class="all__sidebar-item-category">
+                            <div class="perfil-info" style="padding: 20px 0;">
+                                <div class="mb-20">
+                                    <strong>Nome:</strong><br>
+                                    <span>{{ user.get_full_name|default:user.username }}</span>
+                                </div>
+                                <div class="mb-20">
+                                    <strong>Email:</strong><br>
+                                    <span>{{ user.email }}</span>
+                                </div>
+                                <div class="mb-20">
+                                    <strong>Telefone:</strong><br>
+                                    <span>{{ user.phone|default:"Não definido" }}</span>
+                                </div>
+                            </div>
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="theme-btn w-100">Sair</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content / Appointments -->
+            <div class="col-xl-8 col-lg-8">
+                <div class="services__details-left">
+                    <h3 class="mb-30">As Minhas Marcações</h3>
+
+                    {% if user.appointments.all %}
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Data/Hora</th>
+                                    <th>Serviço</th>
+                                    <th>Profissional</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for appointment in user.appointments.all %}
+                                <tr>
+                                    <td>{{ appointment.date_time|date:"d/m/Y H:i" }}</td>
+                                    <td>{{ appointment.service.name }}</td>
+                                    <td>{{ appointment.professional.name|default:"Qualquer" }}</td>
+                                    <td>
+                                        {% if appointment.status == 'pending' %}
+                                        <span class="badge bg-warning text-dark">Pendente</span>
+                                        {% elif appointment.status == 'confirmed' %}
+                                        <span class="badge bg-success">Confirmado</span>
+                                        {% elif appointment.status == 'canceled' %}
+                                        <span class="badge bg-danger">Cancelado</span>
+                                        {% elif appointment.status == 'completed' %}
+                                        <span class="badge bg-info text-dark">Concluído</span>
+                                        {% else %}
+                                        {{ appointment.status }}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-info">
+                        Ainda não tem marcações agendadas.
+                    </div>
+                    <div class="mt-30">
+                        <a href="{% url 'services' %}" class="theme-btn">Fazer Nova Marcação<i
+                                class="far fa-angle-double-right"></i></a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Profile Area End -->
+{% endblock %}

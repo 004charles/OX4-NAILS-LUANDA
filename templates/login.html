@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login - OX4 Nails{% endblock %}
+
+{% block content %}
+<!-- Page Banner Start -->
+<div class="page__banner" data-background="{% static 'img/bg/page.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__banner-title">
+                    <h1>Login</h1>
+                    <div class="page__banner-title-menu">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><span>_</span>Login</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner End -->
+
+<!-- Login Area Start -->
+<div class="contact__area section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-6">
+                <div class="contact__area-form">
+                    <h3 class="t-center mb-30">Bem-vindo de volta!</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-sm-12 mb-30">
+                                <div class="contact__area-form-item">
+                                    <i class="fal fa-user"></i>
+                                    {{ form.username }}
+                                </div>
+                            </div>
+                            <div class="col-sm-12 mb-30">
+                                <div class="contact__area-form-item">
+                                    <i class="fal fa-lock"></i>
+                                    {{ form.password }}
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="contact__area-form-item text-center">
+                                    <button class="theme-btn" type="submit">Entrar<i
+                                            class="far fa-angle-double-right"></i></button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-20 text-center">
+                                <p>Não tem conta? <a href="{% url 'register' %}">Registe-se aqui</a></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login Area End -->
+{% endblock %}
