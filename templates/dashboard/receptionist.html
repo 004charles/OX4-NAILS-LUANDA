@@ -1,12 +1,63 @@
 {% extends 'dashboard/base_receptionist.html' %}
 {% load static %}
 
-{% block title %}Dashboard Recepcionista - OX4 Management{% endblock %}
+{% block title %}Agenda - OX4 Gestão{% endblock %}
+
+{% block extra_head %}
+<!-- FullCalendar CSS -->
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/pt.js'></script>
+<style>
+    #calendar {
+        max-width: 1100px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .fc-event {
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'timeGridDay',
+            locale: 'pt',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            events: '{% url "calendar_events" %}',
+            eventClick: function (info) {
+                // Show basic info or redirect to update
+                alert('Cliente: ' + info.event.title + '\nProfissional: ' + info.event.extendedProps.professional + '\nEstado: ' + info.event.extendedProps.status);
+            }
+        });
+        calendar.render();
+    });
+</script>
+{% endblock %}
 
 {% block content %}
 <div class="row mb-4">
     <div class="col-12">
         <h2 class="h4 text-gray-800">Painel de Controlo</h2>
+    </div>
+</div>
+
+<!-- Calendar Section -->
+<div class="row mb-5">
+    <div class="col-md-12">
+        <div id='calendar'></div>
     </div>
 </div>
 

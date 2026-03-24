@@ -37,8 +37,7 @@
                             <ul>
                                 {% for popular in popular_services %}
                                 <li><a href="{% url 'service_details' popular.id %}"><i
-                                            class="far fa-angle-double-right"></i>{{ popular.name }}<span>({{
-                                            popular.duration_minutes }}m)</span></a></li>
+                                            class="far fa-angle-double-right"></i>{{popular.name }}<span>({{popular.duration_minutes}}m)</span></a></li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -52,7 +51,7 @@
                         </div>
                         <div class="all__sidebar-item-help-contact-content">
                             <span>Ligação Rápida</span>
-                            <h6><a href="tel:+244920000000">+244 920 000 000</a></h6>
+                            <h6><a href="tel:+244931312159">+244 931 312 159</a></h6>
                         </div>
                     </div>
                 </div>
@@ -61,34 +60,33 @@
                 <div class="services__details-left">
                     <div class="services__details-left-image mb-30">
                         {% if service.image %}
-                        <img src="{{ service.image.url }}" alt="{{ service.name }}">
+                        <img src="{{service.image.url}}" alt="{{service.name}}">
                         {% else %}
                         <img src="{% static 'img/services-details.jpg' %}" alt="">
                         {% endif %}
                     </div>
                     <div class="services__details-left-content">
-                        <h2 class="mb-30">{{ service.name }}</h2>
-                        <p class="mb-20">{{ service.description }}</p>
+                        <h2 class="mb-30">{{service.name}}</h2>
+                        <p class="mb-20">{{service.description}}</p>
 
                         <div class="row mt-40 mb-40">
                             <div class="col-sm-6 sm-mb-30">
                                 <div class="service-meta-box">
                                     <h4>Preço</h4>
                                     <p class="price"
-                                        style="font-size: 24px; font-weight: bold; color: var(--theme-color);">{{
-                                        service.price }} Kz</p>
+                                        style="font-size: 24px; font-weight: bold; color: var(--theme-color);">{{service.price}} Kz</p>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="service-meta-box">
                                     <h4>Duração</h4>
-                                    <p>{{ service.duration_minutes }} Minutos</p>
+                                    <p>{{service.duration_minutes}} Minutos</p>
                                 </div>
                             </div>
                         </div>
 
                         <h3 class="mb-15">Sobre este serviço</h3>
-                        <p class="m-0">{{ service.description }}</p>
+                        <p class="m-0">{{service.description}}</p>
 
                         <div class="mt-30">
                             <a href="{% url 'booking' %}" class="theme-btn">Agendar Agora<i

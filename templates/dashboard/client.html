@@ -47,6 +47,10 @@
                                     <strong>Telefone:</strong><br>
                                     <span>{{ user.phone|default:"Não definido" }}</span>
                                 </div>
+                                <div class="mb-20 p-3 bg-light rounded text-center">
+                                    <h6 class="text-primary"><i class="fas fa-crown me-2"></i>Pontos de Fidelidade</h6>
+                                    <div class="h3 mb-0">{{ loyalty_points }}</div>
+                                </div>
                             </div>
                             <form action="{% url 'logout' %}" method="post">
                                 {% csrf_token %}
@@ -71,6 +75,7 @@
                                     <th>Serviço</th>
                                     <th>Profissional</th>
                                     <th>Estado</th>
+                                    <th>Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -90,6 +95,14 @@
                                         <span class="badge bg-info text-dark">Concluído</span>
                                         {% else %}
                                         {{ appointment.status }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if appointment.status == 'completed' %}
+                                        <a href="{% url 'submit_review' appointment.id %}"
+                                            class="btn btn-sm btn-outline-primary">Avaliar</a>
+                                        {% else %}
+                                        -
                                         {% endif %}
                                     </td>
                                 </tr>

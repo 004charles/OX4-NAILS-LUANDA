@@ -62,3 +62,21 @@ class ReceptionistAppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
         fields = ['client', 'service', 'professional', 'date_time', 'notes']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        service = cleaned_data.get('service')
+        professional = cleaned_data.get('professional')
+        date_time = cleaned_data.get('date_time')
+
+        if service and professional and date_time:
+            # Check for past date
+            from django.utils import timezone
+            if date_time < timezone.now():
+                raise forms.ValidationError("Não pode marcar para uma data ou hora no passado.")
+
+            available, error_msg = professional.is_available(date_time, service.duration_minutes)
+            if not available:
+                raise forms.ValidationError(error_msg)
+        
+        return cleaned_data

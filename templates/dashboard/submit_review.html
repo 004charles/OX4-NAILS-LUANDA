@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="services__details-area pt-120 pb-120">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="services__details-left">
+                    <div class="services__details-thumb mb-30">
+                        <h2>Avaliar Serviço</h2>
+                        <p>A sua opinião é muito importante para nós! Como foi a sua experiência com <strong>{{
+                                appointment.service.name }}</strong>?</p>
+                    </div>
+
+                    <div class="contact__form">
+                        <form action="{% url 'submit_review' appointment.id %}" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-xl-12 mb-20">
+                                    <label class="form-label">Sua Nota (1 a 5):</label>
+                                    <div class="rating-stars">
+                                        <select name="rating" class="form-select" required>
+                                            <option value="5">5 Estrelas - Excelente</option>
+                                            <option value="4">4 Estrelas - Muito Bom</option>
+                                            <option value="3">3 Estrelas - Bom</option>
+                                            <option value="2">2 Estrelas - Regular</option>
+                                            <option value="1">1 Estrela - Ruim</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 mb-20">
+                                    <textarea name="comment" placeholder="Escreva o seu comentário aqui (opcional)..."
+                                        rows="4"></textarea>
+                                </div>
+                                <div class="col-xl-12">
+                                    <button type="submit" class="theme-btn">Submeter Avaliação</button>
+                                    <a href="{% url 'client_dashboard' %}" class="btn btn-link ms-2">Voltar ao
+                                        Painel</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

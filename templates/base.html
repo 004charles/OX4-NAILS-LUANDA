@@ -44,21 +44,27 @@
 		<div class="header__area">
 			<div class="container custom__container">
 				<div class="header__area-menubar">
-					<div class="header__area-menubar-left">
+					<div class="header__area-menubar-left" style="flex: 1; display: flex; align-items: center; justify-content: flex-start;">
 						<div class="header__area-menubar-left-logo">
-							<a href="{% url 'home' %}">
-								<h2
-									style="color: #F4C752; font-weight: 800; margin: 0; font-family: 'Playfair Display', serif;">
-									OX4 NAILS</h2>
-							</a>
+							<a href="{% url 'home' %}"
+   style="
+       color: #F2C94C;
+       font-weight: 700;
+       text-decoration: none;
+       white-space: nowrap;
+       font-size: 24px;
+       margin-right: 20px;
+   ">
+    OX4 BELEZA
+</a>
 							<div class="responsive-menu"></div>
 						</div>
-						<div class="header__area-menubar-left-contact">
+						<div class="header__area-menubar-left-contact" style="flex: 0 0 auto; margin-left: 20px; padding-left: 20px; border-left: 1px solid rgba(255,255,255,0.2);">
 							<div class="header__area-menubar-left-contact-icon">
 								<i class="fal fa-phone-alt"></i>
 							</div>
 							<div class="header__area-menubar-left-contact-info">
-								<h6><a href="tel:+125(895)658">+244 923 456 789</a></h6>
+								<h6><a href="tel:+244931312159">+244 931 312 159</a></h6>
 							</div>
 						</div>
 					</div>
@@ -69,25 +75,11 @@
 								<li><a href="{% url 'about' %}">Sobre</a></li>
 								<li><a href="{% url 'services' %}">Serviços</a></li>
 								<li><a href="{% url 'team' %}">Equipa</a></li>
-								<li><a href="{% url 'blog' %}">Blog</a></li>
 								<li><a href="{% url 'contact' %}">Contactos</a></li>
 							</ul>
 						</div>
 						<div class="header__area-menubar-right-box">
-							<div class="header__area-menubar-right-box-search">
-								<div class="search">
-									<span class="header__area-menubar-right-box-search-icon open"><i
-											class="fal fa-search"></i></span>
-								</div>
-								<div class="header__area-menubar-right-box-search-box">
-									<form>
-										<input type="search" placeholder="Procurar.....">
-										<button type="submit"><i class="fal fa-search"></i>
-										</button>
-									</form> <span class="header__area-menubar-right-box-search-box-icon"><i
-											class="fal fa-times"></i></span>
-								</div>
-							</div>
+
 							<div class="header__area-menubar-right-box-btn">
 								{% if user.is_authenticated %}
 								<a href="{% url 'profile' %}" class="theme-border-btn" style="padding: 10px 20px;">Olá,
@@ -119,9 +111,8 @@
 					<div class="footer__area-left">
 						<div class="footer__area-left-logo">
 							<a href="{% url 'home' %}">
-								<h2
-									style="color: #F4C752; font-weight: 800; margin: 0; font-family: 'Playfair Display', serif;">
-									OX4 NAILS</h2>
+								<img src="{% static 'img/logo_nails_luanda.png' %}" alt="OX4 NAILS"
+									style="height: 50px; width: auto;">
 							</a>
 						</div>
 						<div class="footer__area-left-menu">

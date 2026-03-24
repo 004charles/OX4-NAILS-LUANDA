@@ -1,0 +1,13 @@
+﻿Migrations for 'core':
+  core\migrations\0004_product_payment_professional_commission_and_more.py
+    + Create model Product
+    + Add field professional_commission to payment
+    + Add field commission_rate to professional
+    + Add field birth_date to user
+    + Add field internal_notes to user
+    + Add field preferences to user
+    ~ Alter field method on payment
+    + Create model LoyaltyPoints
+    + Create model Review
+    + Create model StockMovement
+    + Create model WorkingHour

@@ -1,0 +1,55 @@
+﻿python : Traceback (most recent call last):
+No linha:1 caractere:1
++ python -m django makemigrations 2>&1 | Out-File -FilePath migrations_ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\IT - Carlos - OX4\AppData\Roaming\Python\Python314\site-packages\django\__main__.py", line 10, in 
+<module>
+    management.execute_from_command_line()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\IT - Carlos - OX4\AppData\Roaming\Python\Python314\site-packages\django\core\management\__init__.py", 
+line 443, in execute_from_command_line
+    utility.execute()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\IT - Carlos - OX4\AppData\Roaming\Python\Python314\site-packages\django\core\management\__init__.py", 
+line 437, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\IT - Carlos - OX4\AppData\Roaming\Python\Python314\site-packages\django\core\management\base.py", 
+line 420, in run_from_argv
+    self.execute(*args, **cmd_options)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\IT - Carlos - OX4\AppData\Roaming\Python\Python314\site-packages\django\core\management\base.py", 
+line 461, in execute
+    self.check(**check_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\IT - Carlos - OX4\AppData\Roaming\Python\Python314\site-packages\django\core\management\base.py", 
+line 496, in check
+    all_issues = checks.run_checks(
+        app_configs=app_configs,
+    ...<2 lines>...
+        databases=databases,
+    )
+  File "C:\Users\IT - Carlos - OX4\AppData\Roaming\Python\Python314\site-packages\django\core\checks\registry.py", 
+line 89, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "C:\Users\IT - Carlos - 
+OX4\AppData\Roaming\Python\Python314\site-packages\django\core\checks\security\base.py", line 303, in 
+check_csp_settings
+    if (value := getattr(settings, name, None)) is not None
+                 ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\IT - Carlos - OX4\AppData\Roaming\Python\Python314\site-packages\django\conf\__init__.py", line 75, 
+in __getattr__
+    self._setup(name)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\IT - Carlos - OX4\AppData\Roaming\Python\Python314\site-packages\django\conf\__init__.py", line 55, 
+in _setup
+    raise ImproperlyConfigured(
+    ...<4 lines>...
+    )
+django.core.exceptions.ImproperlyConfigured: Requested setting SECURE_CSP, but settings are not configured. You must 
+either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.

@@ -2945,7 +2945,7 @@ Menu Bar Sticky
   width: 100%;
   box-shadow: var(--box-shadow-3);
   animation: header_sticky 1.1s;
-  background: var(--white);
+  background: #000000;
   display: block;
 }
 
@@ -2978,6 +2978,7 @@ Menu Bar
   z-index: 99999;
   border-bottom: 1px solid var(--border-color-3);
   padding: 0 50px;
+  background: #000000;
 }
 
 .header__area.two {
